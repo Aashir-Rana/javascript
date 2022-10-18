@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>CALLBACK FUNCTION PRACTICE</h1>
+    <script>
+      function sayHello() {
+        console.log("hello hamza");
+      }
+      function sayHi() {
+        console.log("hi najoo");
+      }
+      function name(first, last, callback) {
+        console.log(first + last);
+        callback();
+      }
+      let a = "rana";
+      let b = "aashir";
+      name(a, b, sayHello);
+
+      name("aashir", "rana", sayHi);
+
+      name(5, 10, function () {
+        console.log("ya anonymous function ha");
+      });
+    </script>
+  </body>
+</html>
