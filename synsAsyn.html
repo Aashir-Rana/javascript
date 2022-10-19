@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Synchoronous and Asynchoronous practice</h1>
+    <script>
+      // sync function it depends on a function
+      const func2 = () => {
+        console.log("func 2 is starting");
+      };
+      const func1 = () => {
+        console.log("func1 is starting");
+        func2();
+        console.log("func1 is ending");
+      };
+      func1();
+
+      //   async function it is independent
+
+      const rana = () => {
+        setTimeout(() => {
+          console.log("najo is dancing");
+          console.log("aj ki chai mazay ki nahi the");
+        }, 3000);
+      };
+      const aashir = () => {
+        console.log("sab ki godon ma khela ha najo");
+        rana();
+        console.log("najo na aj maza karwa dia");
+      };
+      aashir();
+    </script>
+  </body>
+</html>
