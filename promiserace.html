@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <button
+        id="btnGet"
+        style="
+          margin: 15rem;
+          padding: 10px 10px;
+          border: 1px solid black;
+          border-radius: 5px;
+          cursor: pointer;
+        "
+      >
+        Get Message
+      </button>
+      <div id="message"></div>
+      <div id="loader"></div>
+    </div>
+    <script>
+      const TIMEOUT = 500;
+      const DATA_LOAD_TIME = 3000;
+
+      function getData() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const message = "kam kar dia ha bhai";
+            resolve(message);
+          }, DATA_LOAD_TIME);
+        });
+      }
+
+      function showContent(message) {
+        document.querySelector("#message").textContent = message;
+      }
+
+      function timeout() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => reject(), TIMEOUT);
+        });
+      }
+
+      function showLoadingIndicator() {
+        document.querySelector("#loader").className = "loader";
+      }
+
+      function hideLoadingIndicator() {
+        document.querySelector("#loader").className = "";
+      }
+
+      // handle button click event
+      const btn = document.querySelector("#btnGet");
+
+      btn.addEventListener("click", () => {
+        // reset UI if users click the second time
+        reset();
+
+        // show content or loading indicator
+        Promise.race([
+          getData().then(showContent).then(hideLoadingIndicator),
+          timeout(),
+        ]).catch(showLoadingIndicator);
+      });
+
+      // reset UI
+      function reset() {
+        hideLoadingIndicator();
+        showContent("");
+      }
+    </script>
+  </body>
+</html>
