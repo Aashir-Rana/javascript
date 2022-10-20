@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Promise.All</h1>
+    <script>
+      const rana = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("najo par aj fareed bhai ka hath tha");
+          resolve(10);
+        }, 1000);
+      });
+      const aashir = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("basit bhai ki offer najo ko");
+          resolve(20);
+        }, 2000);
+      });
+      const hamza = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("hamza ki aj train nikal gai");
+          resolve(30);
+        }, 3000);
+      });
+      Promise.all([rana, aashir, hamza]).then((results) => {
+        const done = results.reduce((p, c) => p + c);
+
+        console.log(`Results: ${results}`);
+        console.log(`done: ${done}`);
+      });
+    </script>
+  </body>
+</html>
